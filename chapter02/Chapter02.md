@@ -1,5 +1,133 @@
 # Chapter 2
 
+## `학습 할 것`
+- 프리미티브 타입 종류와 값의 범위 그리고 기본 값
+- 프리미티브 타입과 레퍼런스 타입
+- 리터럴
+- 변수 선언 및 초기화하는 방법
+- 변수의 스코프와 라이프타임
+- 타입 변환, 캐스팅 그리고 타입 프로모션
+- 1차 및 2차 배열 선언하기
+- 타입 추론, var
+
+## `Primitive type` vs `Reference type`
+- Primitive type
+  - '값'을 저장
+  - byte, short, signed/unsigned int, signed/unsigned long, float, double, boolean, char
+
+- Reference type
+  - 객체의 참조값 주소를 저장 
+  - Primitive type을 제외한 모든 것
+
+- Boxing vs Unboxing
+  - Boxing: Primitive type -> Reference type 변환
+  - Unboxing: Reference type -> Primitive type 변환
+
+## `리터럴`
+- 리터럴(literal)이란?
+  - 문자 그대로의 값을 갖는 것
+```Java
+boolean result = true;
+char c = 'C';
+byte b = 10;
+short s = 100;
+int i = 100;
+```
+- Integer Literals
+    - long 타입은 **L** 로 끝나거나 **l** 로 끝나는 값
+    - 그외 나머지 숫자는 int (`생략 가능!`)
+    - 16진수: 0x 로 시작
+    - 2진수: 0b 로 시작
+
+- Floating-Point Literals
+    - float 타입은 **F**로 끝나거나 **f** 로 끝나는 값
+    - 그 외 나머지는 double (optional, **D 혹은 d** 로 끝나는 값, `생략 가능!`)
+
+- Character and String Literals
+    - Unicode character
+    - special escape character
+        - \b : 백스페이스
+        - \t : 탭
+        - \n : new line
+        - \f : form feed
+        - \r : 캐리지 리턴
+        - \" : 쌍따옴표
+        - \' : 따옴표
+        - \\ : 역슬래시
+
+## `변수 선언 및 초기화하는 방법`
+
+```Java
+byte variableB; 
+variableB = 100;
+
+short variableS;
+variableS = 30_000;
+
+// 10진수
+int variableI = 100_000;
+// 8진수
+int variableI = 010; // 8
+// 16진수
+int variableI = 0xa; // 10
+// 2진수
+int variableI = 0b11; // 3
+
+long variableL = 100_000_000_000; // 혹은 100_000_000_000l;
+
+float variableF = 3.14f;
+
+double variableD = 3.14; // 3.14D; 기본적으로 Double 로 판단하여 선언해준다.
+
+char variableC = 'c';
+
+boolean bool = true;
+```
+
+## `타입 변환, 캐스팅 그리고 타입 프로모션`
+- 타입 변환
+  - Widening Conversion
+    - Type 간의 호환성이 존재하고 변환될 타입이 이전에 지니고 있던 타입보다 큰 경우 자동으로 변환되는 것을 말한다.
+    - (int → long , float → double...)
+
+  - Narrowing Conversion
+    - 대상 Type들이 같은 리터럴을 다루지만, 변환될 타입이 이전에 지니고 있던 타입보다 작은 경우 Casting을 통해 변환할 수 있는 것을 말한다. 내부의 값에 따라 OverFlow가 발생할 수 있다.
+    - (int → short, double → float)
+
+  - String Conversion
+    - Wrapper Class의 toString()을 통해 변환되는 것을 말하거나 혹은 parse를 통한 경우를 말한다.
+```java
+Integer numA = 100;
+String str = num.toString();
+int nunB = integer.parseInt(str);
+```
+
+## `1차 및 2차 배열 선언하기`
+
+```java
+class ArrayExample {
+	public static void main(String[] args) {
+        //1차원 배열
+        int[] oneDimensionArrayEx1 = {1, 2, 3, 4, 5};
+        int[] oneDimensionArrayEx2;
+        oneDimensionArrayEx2 = new int[10];
+
+        //2차원 배열
+        int[][] twoDimensionArrayEx1 = {{1, 2}, {3, 4}};
+        int[][] twoDimensionArrayEx2;
+        twoDimensionArrayEx2 = new int[10][10];
+    }
+}
+```
+
+## `타입 추론, var`
+- var
+  - 자바 10에 추가된 기능으로 method 호출 및 선언과 variable 혹은 object 선언을 통해 **실제 타입을 추론**하는 형식이다.
+  - 직관적인 예시 : https://johngrib.github.io/wiki/java10-var/
+  - var는 컴파일 타임 때 실제 타입으로 치환된다.
+
+
+
 #### [2-1] 다음 표의 빈 칸에 8개의 기본형(primitive type)을 알맞은 자리에 넣으시오.
 
  | 종류 | 1 byte | 2 byte | 4 byte | 8 byte
