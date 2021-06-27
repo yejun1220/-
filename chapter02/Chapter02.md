@@ -126,8 +126,10 @@ class ArrayExample {
   - 직관적인 예시 : https://johngrib.github.io/wiki/java10-var/
   - var는 컴파일 타임 때 실제 타입으로 치환된다.
 
+<br>
 
 
+## `자바의 정석 연습문제 `
 #### [2-1] 다음 표의 빈 칸에 8개의 기본형(primitive type)을 알맞은 자리에 넣으시오.
 
  | 종류 | 1 byte | 2 byte | 4 byte | 8 byte
