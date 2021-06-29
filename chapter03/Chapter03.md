@@ -27,14 +27,15 @@
 
     [연습문제]/ch3/Exercise3_2.java
     class Exercise3_2 {
-    public static void main(String[] args) {
-    int numOfApples = 123; // 사과의 개수
-    int sizeOfBucket = 10; // 바구니의 크기(바구니에 담을 수 있는 사과의 개수)
-    int numOfBucket = ( /* (1) */ ); // 모든 사과를 담는데 필요한 바구니의 수
+        public static void main(String[] args) {
+            int numOfApples = 123; // 사과의 개수
+            int sizeOfBucket = 10; // 바구니의 크기(바구니에 담을 수 있는 사과의 개수)
+            int numOfBucket = ( /* (1) */ ); // 모든 사과를 담는데 필요한 바구니의 수
 
-    System.out.println("필요한 바구니의 수 :"+numOfBucket);
+            System.out.println("필요한 바구니의 수 :"+numOfBucket);
+        }
     }
-    }
+    
     [실행결과]
     13
 
@@ -43,23 +44,25 @@
 
     [연습문제]/ch3/Exercise3_3.java
     class Exercise3_3 {
-    public static void main(String[] args) {
-    int num = 10;
-    System.out.println( /* (1) */ );
+        public static void main(String[] args) {
+            int num = 10;
+            System.out.println( /* (1) */ );
+        }
     }
-    }
+    
     [실행결과]
-        
+    양수
         
 ## [3-4] 아래는 변수 num의 값 중에서 백의 자리 이하를 버리는 코드이다. 만일 변수 num의 값이 ‘456’이라면 ‘400’이 되고, ‘111’이라면 ‘100’이 된다. (1)에 알맞은 코드를 넣으시오.
 
     [연습문제]/ch3/Exercise3_4.java
     class Exercise3_4 {
-    public static void main(String[] args) {
-    int num = 456;
-    System.out.println( /* (1) */ );
+        public static void main(String[] args) {
+            int num = 456;
+            System.out.println( /* (1) */ );
+        }
     }
-    }
+    
     [실행결과]
     400
 
@@ -68,11 +71,12 @@
 
     [연습문제]/ch3/Exercise3_5.java
     class Exercise3_5 {
-    public static void main(String[] args) {
-    int num = 333;
-    System.out.println( /* (1) */ );
+        public static void main(String[] args) {
+            int num = 333;
+            System.out.println( /* (1) */ );
+        }
     }
-    }
+    
     [실행결과]
     331
 
@@ -81,11 +85,12 @@
 
     [연습문제]/ch3/Exercise3_6.java
     class Exercise3_6 {
-    public static void main(String[] args) {
-    int num = 24;
-    System.out.println( /* (1) */ );
+        public static void main(String[] args) {
+            int num = 24;
+            System.out.println( /* (1) */ );
+        }
     }
-    }
+    
     [실행결과]
     6
     
@@ -93,12 +98,12 @@
 
     [연습문제]/ch3/Exercise3_7.java
     class Exercise3_7 {
-    public static void main(String[] args) {
-    int fahrenheit = 100;
-    float celcius = ( /* (1) */ );
-    System.out.println("Fahrenheit:"+fahrenheit);
-    System.out.println("Celcius:"+celcius);
-    }
+        public static void main(String[] args) {
+            int fahrenheit = 100;
+            float celcius = ( /* (1) */ );
+            System.out.println("Fahrenheit:"+fahrenheit);
+            System.out.println("Celcius:"+celcius);
+        }
     }
 
     [실행결과]
@@ -109,24 +114,25 @@
 
     [연습문제]/ch3/Exercise3_8.java
     class Exercise3_8 {
-    public static void main(String[] args) {
-    byte a = 10;
-    byte b = 20;
-    byte c = a + b;
-    char ch = 'A';
-    ch = ch + 2;
-    float f = 3 / 2;
-    long l = 3000 * 3000 * 3000;
-    float f2 = 0.1f;
-    double d = 0.1;
-    boolean result = d==f2;
-    System.out.println("c="+c);
-    System.out.println("ch="+ch);
-    System.out.println("f="+f);
-    System.out.println("l="+l);
-    System.out.println("result="+result);
+            public static void main(String[] args) {
+            byte a = 10;
+            byte b = 20;
+            byte c = a + b;
+            char ch = 'A';
+            ch = ch + 2;
+            float f = 3 / 2;
+            long l = 3000 * 3000 * 3000;
+            float f2 = 0.1f;
+            double d = 0.1;
+            boolean result = d==f2;
+            System.out.println("c="+c);
+            System.out.println("ch="+ch);
+            System.out.println("f="+f);
+            System.out.println("l="+l);
+            System.out.println("result="+result);
+        }
     }
-    }
+    
     [실행결과]
     c=30
     ch=C
@@ -135,12 +141,13 @@
     result=true
         
 ## [3-9] 다음은 문자형 변수 ch가 영문자(대문자 또는 소문자)이거나 숫자일 때만 변수 b의 값이 true가 되도록 하는 코드이다. (1)에 알맞은 코드를 넣으시오.
+
     [연습문제]/ch3/Exercise3_9.java
     class Exercise3_9 {
-    public static void main(String[] args) {
-    char ch = 'z';
-    boolean b = ( /* (1) */ );
-    System.out.println(b);
+        public static void main(String[] args) {
+            char ch = 'z';
+            boolean b = ( /* (1) */ );
+            System.out.println(b);
         }
     }
 
@@ -148,15 +155,17 @@
     true
 
 ## [3-10] 다음은 대문자를 소문자로 변경하는 코드인데, 문자 ch에 저장된 문자가 대문자인 경우에만 소문자로 변경한다. 문자코드는 소문자가 대문자보다 32만큼 더 크다. 예를 들어 'A‘의 코드는 65이고 ’a'의 코드는 97이다. (1)~(2)에 알맞은 코드를 넣으시오.
+
     [연습문제]/ch3/Exercise3_10.java
     class Exercise3_10 {
-    public static void main(String[] args) {
-    char ch = 'A';
-    char lowerCase = ( /* (1) */ ) ? ( /* (2) */ ) : ch;
-    System.out.println("ch:"+ch);
-    System.out.println("ch to lowerCase:"+lowerCase);
+        public static void main(String[] args) {
+            char ch = 'A';
+            char lowerCase = ( /* (1) */ ) ? ( /* (2) */ ) : ch;
+            System.out.println("ch:"+ch);
+            System.out.println("ch to lowerCase:"+lowerCase);
+        }
     }
-    }
+    
     [실행결과]
     ch:A
     ch to lowerCase:a
