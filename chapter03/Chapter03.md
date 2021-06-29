@@ -26,6 +26,7 @@
 ## [3-2] 아래의 코드는 사과를 담는데 필요한 바구니(버켓)의 수를 구하는 코드이다. 만일 사과의 수가 123개이고 하나의 바구니에는 10개의 사과를 담을 수 있다면, 13개의 바구니가 필요할 것이다. (1)에 알맞은 코드를 넣으시오.
 
     [연습문제]/ch3/Exercise3_2.java
+    
     class Exercise3_2 {
         public static void main(String[] args) {
             int numOfApples = 123; // 사과의 개수
@@ -43,6 +44,7 @@
 [Hint] 삼항 연산자를 두 번 사용하라.
 
     [연습문제]/ch3/Exercise3_3.java
+    
     class Exercise3_3 {
         public static void main(String[] args) {
             int num = 10;
@@ -56,6 +58,7 @@
 ## [3-4] 아래는 변수 num의 값 중에서 백의 자리 이하를 버리는 코드이다. 만일 변수 num의 값이 ‘456’이라면 ‘400’이 되고, ‘111’이라면 ‘100’이 된다. (1)에 알맞은 코드를 넣으시오.
 
     [연습문제]/ch3/Exercise3_4.java
+    
     class Exercise3_4 {
         public static void main(String[] args) {
             int num = 456;
@@ -70,6 +73,7 @@
 ## [3-5] 아래는 변수 num의 값 중에서 일의 자리를 1로 바꾸는 코드이다. 만일 변수 num의 값이 333이라면 331이 되고, 777이라면 771이 된다. (1)에 알맞은 코드를 넣으시오.
 
     [연습문제]/ch3/Exercise3_5.java
+    
     class Exercise3_5 {
         public static void main(String[] args) {
             int num = 333;
@@ -84,6 +88,7 @@
 [Hint] 나머지 연산자를 사용하라.
 
     [연습문제]/ch3/Exercise3_6.java
+    
     class Exercise3_6 {
         public static void main(String[] args) {
             int num = 24;
@@ -97,6 +102,7 @@
 ## [3-7] 아래는 화씨(Fahrenheit)를 섭씨(Celcius)로 변환하는 코드이다. 변환공식이 'C = 5/9 ×(F - 32)'라고 할 때, (1)에 알맞은 코드를 넣으시오. 단, 변환 결과값은 소수점 셋째자리에서 반올림해야한다.(Math.round()를 사용하지 않고 처리할 것)
 
     [연습문제]/ch3/Exercise3_7.java
+    
     class Exercise3_7 {
         public static void main(String[] args) {
             int fahrenheit = 100;
@@ -113,6 +119,7 @@
 ## [3-8] 아래 코드의 문제점을 수정해서 실행결과와 같은 결과를 얻도록 하시오.
 
     [연습문제]/ch3/Exercise3_8.java
+    
     class Exercise3_8 {
             public static void main(String[] args) {
             byte a = 10;
@@ -143,6 +150,7 @@
 ## [3-9] 다음은 문자형 변수 ch가 영문자(대문자 또는 소문자)이거나 숫자일 때만 변수 b의 값이 true가 되도록 하는 코드이다. (1)에 알맞은 코드를 넣으시오.
 
     [연습문제]/ch3/Exercise3_9.java
+    
     class Exercise3_9 {
         public static void main(String[] args) {
             char ch = 'z';
@@ -157,6 +165,7 @@
 ## [3-10] 다음은 대문자를 소문자로 변경하는 코드인데, 문자 ch에 저장된 문자가 대문자인 경우에만 소문자로 변경한다. 문자코드는 소문자가 대문자보다 32만큼 더 크다. 예를 들어 'A‘의 코드는 65이고 ’a'의 코드는 97이다. (1)~(2)에 알맞은 코드를 넣으시오.
 
     [연습문제]/ch3/Exercise3_10.java
+    
     class Exercise3_10 {
         public static void main(String[] args) {
             char ch = 'A';
