@@ -45,7 +45,6 @@ for (int i = 0; i <= 20; i++) {
 #### [4-3] 1+(1+2)+(1+2+3)+(1+2+3+4)+...+(1+2+3+...+10)의 결과를 계산하시오.
 
 ```java
-
 int sum = 0;
 int total = 0;
 
@@ -78,39 +77,39 @@ for (int i = 1; true; i++, s=-s) {
 #### [4-5] 다음의 for문을 while문으로 변경하시오.
 
 ```java
-    [연습문제]/ch4/Exercise4_5.java
+[연습문제]/ch4/Exercise4_5.java
 
-    public class Exercise4_5 {
-        public static void main(String[] args) {
-            for(int i=0; i<=10; i++) {
-                for(int j=0; j<=i; j++)
-                    System.out.print("*");
-                System.out.println();
-            }
-        } // end of main
-    } // end of class
+public class Exercise4_5 {
+    public static void main(String[] args) {
+        for(int i=0; i<=10; i++) {
+            for(int j=0; j<=i; j++)
+                System.out.print("*");
+            System.out.println();
+        }
+    } // end of main
+} // end of class
 ```
 
 ```java
-    [답]/ch4/Exercise4_5.java
+[답]/ch4/Exercise4_5.java
     
-    public class Exercise4_5 {
-        public static void main(String[] args) {
-            
-            int i = 0;
-            while(i <= 10) {
-                int j = 0;
+public class Exercise4_5 {
+    public static void main(String[] args) {
+        
+        int i = 0;
+        while(i <= 10) {
+            int j = 0;
 
-                while(j <= i) {
-                    System.out.print("*");
-                    j++;
-                }
-
-                System.out.println();
-                i++;
+            while(j <= i) {
+                System.out.print("*");
+                j++;
             }
+
+            System.out.println();
+            i++;
         }
     }
+}
 ```
 
 <br>
@@ -150,5 +149,28 @@ for (int x = 0; x <= 10; i++)
         if(2 * x + 4 * y == 10)
             System.out.println("x=" + x + ", y=" + y);
 ```
+
+<br>
+
+#### [4-9] 숫자로 이루어진 문자열 str이 있을 때, 각 자리의 합을 더한 결과를 출력하는 코 드를 완성하라. 만일 문자열이 "12345"라면, ‘1+2+3+4+5’의 결과인 15를 출력이 출력 되어야 한다. (1)에 알맞은 코드를 넣으시오.
+
+```java
+[Hint] String클래스의 charAt(int i)을 사용
+[연습문제]/ch4/Exercise4_9.java
+class Exercise4_9 {
+    public static void main(String[] args) {
+        String str = "12345";
+        int sum = 0;
+        for(int i=0; i < str.length(); i++) {
+            /* (1) 알맞은 코드를 넣어 완성하시오. */
+        }
+        System.out.println("sum="+sum);
+    }
+}
+[실행결과]
+15
+```
+
+`sum += str.charAt(i) - '0'`
 
 <br>
