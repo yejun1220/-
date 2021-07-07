@@ -121,7 +121,7 @@ for (int i = 1; true; i++, s=-s) {
 for(int i=1;i<=6;i++)
     for(int j=1;j<=6;j++)
         if(i+j==6)
-            System.out.println(i+"+"+j+"="+(i+j));
+            System.out.println(i + "+" + j + "=" + (i+j));
 ```
 
 <br>
@@ -139,5 +139,16 @@ class Exercise4_7 {
 ```
 
 `(int)(Math.random()*6) + 1`
+
+<br>
+
+#### [4-8] 방정식 2x+4y=10의 모든 해를 구하시오. 단, x와 y는 정수이고 각각의 범위는 0<=x<=10, 0<=y<=10 이다.
+
+```java
+for (int x = 0; x <= 10; i++)
+    for (int y = 0; y <= 10; i++)
+        if(2 * x + 4 * y == 10)
+            System.out.println("x=" + x + ", y=" + y);
+```
 
 <br>
