@@ -32,13 +32,15 @@
 
 ```java
 int sum = 0;
-for (int i = 0, i <= 20, i++) {
+for (int i = 0; i <= 20; i++) {
 
     if(i % 2 != 0 || i % 3 != 0) {
         sum += i;
     }
 }
 ```
+
+<br>
 
 #### [4-3] 1+(1+2)+(1+2+3)+(1+2+3+4)+...+(1+2+3+...+10)의 결과를 계산하시오.
 
@@ -47,8 +49,28 @@ for (int i = 0, i <= 20, i++) {
 int sum = 0;
 int total = 0;
 
-for (int i < 0, i <= 10, i++) {
+for (int i < 0; i <= 10; i++) {
     sum += i
     total += sum
 }
 ```
+
+<br>
+
+#### [4-4] 1+(-2)+3+(-4)+... 과 같은 식으로 계속 더해나갔을 때, 몇까지 더해야 총합이 100이상이 되는지 구하시오.
+
+```java
+int sum = 0;
+int s = 1;
+int answer = 0;
+
+for (int i = 1; true; i++, s=-s) {
+    answer = i * s;
+    sum += answer 
+
+    if (sum > 100)
+        break;
+}
+```
+
+<br>
