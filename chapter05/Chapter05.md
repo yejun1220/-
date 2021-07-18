@@ -3,11 +3,13 @@
 #### [5-1] 다음은 배열을 선언하거나 초기화한 것이다. 잘못된 것을 고르고 그 이유를 설명하시오.
 
     a. int[] arr[];
-    b. int[] arr = {1,2,3,};
+    b. int[] arr = {1,2,3,}; // 쉼표 상관 X
     c. int[] arr = new int[5];
-    d. int[] arr = new int[5]{1,2,3,4,5};
-    e. int arr[5];
+    d. int[] arr = new int[5]{1,2,3,4,5}; //  {} 크기 보고 정해짐, [5] 불가능 
+    e. int arr[5]; // 배열 크기를 바로 선언하지 못함,
     f. int[] arr[] = new int[3][];
+
+`d, e`
 
 <br>
 
