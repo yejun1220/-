@@ -338,11 +338,94 @@ class Exercise5_10 {
     } // end of main
 } // end of class
 
-
-
 [실행결과]
 src:abc123
 result:`~!wer
+```
+
+<br>
+
+#### [5-11] 주어진 2차원 배열의 데이터보다 가로와 세로로 1이 더 큰 배열을 생성해서 배열의 행과 열의 마지막 요소에 각 열과 행의 총합을 저장하고 출력하는 프로그램이다. (1)에 알맞은 코드를 넣어서 완성하시오.
+
+```java
+[연습문제]/ch5/Exercise5_11.java
+class Exercise5_11 {
+    public static void main(String[] args) {
+        int[][] score = {
+            {100, 100, 100}
+            , {20, 20, 20}
+            , {30, 30, 30}
+            , {40, 40, 40}
+            , {50, 50, 50}
+            };
+        int[][] result = new int[score.length+1][score[0].length+1];
+
+        for(int i=0; i < score.length;i++) {
+            for(int j=0; j < score[i].length;j++) {
+                
+            }
+        }
+        for(int i=0; i < result.length;i++) {
+            for(int j=0; j < result[i].length;j++) {
+                System.out.printf("%4d",result[i][j]);
+            }
+            System.out.println();
+        }
+    } // main
+}
+
+[실행결과]
+100 100 100 300
+20 20 20 60
+30 30 30 90
+40 40 40 120
+50 50 50 150
+240 240 240 720
+```
+
+<br>
+
+#### [5-12] 예제5-23을 변경하여, 아래와 같은 결과가 나오도록 하시오.
+
+    [실행결과]
+    Q1. chair의 뜻은? dmlwk
+    틀렸습니다. 정답은 의자입니다
+    Q2. computer의 뜻은? 컴퓨터
+    정답입니다.
+    Q3. integer의 뜻은? 정수
+    정답입니다.
+    전체 3문제 중 2문제 맞추셨습니다.
+
+```java
+[연습문제]/ch5/Exercise5_12.java
+
+import java.util.*;
+
+class Exercise5_12 {
+    public static void main(String[] args) {
+        String[][] words = {
+            {"chair","의자"}, // words[0][0], words[0][1]
+            {"computer","컴퓨터"}, // words[1][0], words[1][1]
+            {"integer","정수"} // words[2][0], words[2][1]
+            };
+
+        int score = 0;
+        Scanner scanner = new Scanner(System.in);
+        for(int i=0;i<words.length;i++) {
+            System.out.printf("Q%d. %s의 뜻은?", i+1, words[i][0]);
+            String tmp = scanner.nextLine();
+            
+            if(tmp.equals(words[i][1])) {
+                System.out.printf("정답입니다.%n%n");
+                score++;
+            }
+            else {
+                System.out.printf("틀렸습니다. 정답은 %s입니다.%n%n",words[i][1]);
+            }
+        }
+        System.out.printf("전체 %d문제 중 %d문제 맞추셨습니다.%n", words.length, score);
+    } 
+}
 ```
 
 <br>
