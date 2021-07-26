@@ -29,11 +29,21 @@ class Exercise6_2 {
     }
 }
 class SutdaCard {
-/*
-(1) 알맞은 코드를 넣어 완성하시오.
-*/
+    int num;
+    boolean isK;
+    SutdaCard() {
+        this(1, true);
+    }
+
+    SutdaCard(int num, boolean isK) {
+        this.num = num;
+        this.isKwang = isK;
+    }
+        String info() { 
+        return num + ( isK? "K" : "");
+    }
 }
 [실행결과]
-31
-K
+3
+1K
 ```
