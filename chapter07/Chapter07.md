@@ -323,3 +323,154 @@ class Exercise7_10 {
 CH:10
 VOL:20
 ```
+
+<br>
+
+#### [7-11] 문제7-10에서 작성한 MyTv2클래스에 이전 채널(previous channel)로 이동하는 기능의 메서드를 추가해서 실행결과와 같은 결과를 얻도록 하시오.
+[Hint] 이전 채널의 값을 저장할 멤버변수를 정의하라.
+
+    메서드명 : gotoPrevChannel
+    기 능 : 현재 채널을 이전 채널로 변경한다.
+    반환타입 : 없음
+    매개변수 : 없음
+
+```java
+[연습문제]/ch7/Exercise7_11.java
+class MyTv2 {
+    private boolean isPowerOn;
+    private int channel;
+    private int volume;
+    private int prevChannel;
+
+    final int MAX_VOLUME = 100;
+    final int MIN_VOLUME = 0;
+    final int MAX_CHANNEL = 100;
+    final int MIN_CHANNEL = 1;
+
+    void setChannel(int channel) {
+        if(channel > MAX_CHANNEL || channel < MIN_CHANNEL)
+            return null;
+
+        prevChannel = this.channel;
+        this.channel = channel;
+    }
+
+    int getChannel() {
+        return channel;
+    }
+
+    void gotoPrevChannel() {
+        setChannel(prevChannel);
+    }
+}
+
+class Exercise7_11 {
+    public static void main(String args[]) {
+    MyTv2 t = new MyTv2();
+
+    t.setChannel(10);
+    System.out.println("CH:"+t.getChannel());
+    t.setChannel(20);
+    System.out.println("CH:"+t.getChannel());
+    t.gotoPrevChannel();
+    System.out.println("CH:"+t.getChannel());
+    t.gotoPrevChannel();
+    System.out.println("CH:"+t.getChannel());
+    }
+}
+[실행결과]
+CH:10
+CH:20
+CH:10
+CH:2
+```
+
+<br>
+
+#### [7-12] 다음 중 접근 제어자에 대한 설명으로 옳지 않은 것은? (모두 고르시오)
+    a. public은 접근제한이 전혀 없는 접근 제어자이다.
+    b. (default)가 붙으면, 같은 패키지 내에서만 접근이 가능하다.
+    c. 지역변수에도 접근 제어자를 사용할 수 있다.
+    d. protected가 붙으면, 같은 패키지 내에서도 접근이 가능하다.
+    e. protected가 붙으면, 다른 패키지의 자손 클래스에서 접근이 가능하다.
+
+`c`
+
+<br>
+
+#### [7-13] Math클래스의 생성자는 접근 제어자가 private이다. 그 이유는 무엇인가?
+
+`static메서드이므로 객체를 생성할 필요가 없기 때문이다.`
+
+<br>
+
+#### [7-14] 문제7-1에 나오는 섯다카드의 숫자와 종류(isKwang)는 사실 한번 값이 지정되면 변경되어서는 안 되는 값이다. 카드의 숫자가 한번 잘못 바뀌면 똑같은 카드가 두 장이 될 수 도 있기 때문이다. 이러한 문제점이 발생하지 않도록 아래의 SutdaCard를 수정하시오.
+
+```java
+[연습문제]/ch7/Exercise7_14.java
+class SutdaCard {
+    final int NUM;
+    final boolean IS_KWANG;
+
+    SutdaCard() {
+        this(1, true);
+    }
+
+    SutdaCard(int num, boolean isKwang) {
+        this.NUM = num;
+        this.IS_KWANG = isKwang;
+    }
+
+    public String toString() {
+        return NUM + ( IS_KWANG ? "K":"");
+    }
+}
+
+class Exercise7_14 {
+    public static void main(String args[]) {
+        SutdaCard card = new SutdaCard(1, true);
+    }
+}
+```
+
+<br>
+
+#### [7-15] 클래스가 다음과 같이 정의되어 있을 때, 형변환을 올바르게 하지 않은 것은? (모두 고르시오.)
+
+    class Unit {}
+    class AirUnit extends Unit {}
+    class GroundUnit extends Unit {}
+    class Tank extends GroundUnit {}
+    class AirCraft extends AirUnit {}
+
+    Unit u = new GroundUnit();
+    Tank t = new Tank();
+    AirCraft ac = new AirCraft();
+
+
+    a. u = (Unit)ac;
+    b. u = ac;
+    c. GroundUnit gu = (GroundUnit)u;
+    d. AirUnit au = ac;
+    e. t = (Tank)u; ← 조상타입의 인스턴스를 자손타입으로 형변환 할 수 없다.
+    f. GroundUnit gu = t;
+
+`e`
+
+<br>
+
+#### [7-16] 다음 중 연산결과가 true가 아닌 것은? (모두 고르시오)
+
+    class Car {}
+    class FireEngine extends Car implements Movable {}
+    class Ambulance extends Car {}
+    FireEngine fe = new FireEngine();
+
+    a. fe instanceof FireEngine
+    b. fe instanceof Movable
+    c. fe instanceof Object
+    d. fe instanceof Car
+    e. fe instanceof Ambulance
+
+`e`
+
