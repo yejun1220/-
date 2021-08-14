@@ -474,3 +474,500 @@ class Exercise7_14 {
 
 `e`
 
+<br>
+
+#### [7-17] 아래 세 개의 클래스로부터 공통부분을 뽑아서 Unit이라는 클래스를 만들고, 이 클래스를 상속받도록 코드를 변경하시오.
+
+```java
+abstract class Unit {
+    int x, y;
+    abstract void move(int x, int y); // 모든 클래스가 사용하므로, 각 클래스마다 사용 방법이 다르므로
+    void stop();
+}
+
+class Marine { // 보병
+    int x, y; // 현재 위치
+    void move(int x, int y) { /* 지정된 위치로 이동 */ }
+    void stop() { /* 현재 위치에 정지 */ }
+    void stimPack() { /* 스팀팩을 사용한다.*/}
+}
+
+class Tank { // 탱크
+    int x, y; // 현재 위치
+    void move(int x, int y) { /* 지정된 위치로 이동 */ }
+    void stop() { /* 현재 위치에 정지 */ }
+    void changeMode() { /* 공격모드를 변환한다. */}
+}
+
+class Dropship { // 수송선
+    int x, y; // 현재 위치
+    void move(int x, int y) { /* 지정된 위치로 이동 */ }
+    void stop() { /* 현재 위치에 정지 */ }
+    void load() { /* 선택된 대상을 태운다.*/ }
+    void unload() { /* 선택된 대상을 내린다.*/ }
+}
+```
+
+<br>
+
+#### [7-18] 다음과 같은 실행결과를 얻도록 코드를 완성하시오.
+[Hint] instanceof연산자를 사용해서 형변환한다.
+
+    메서드명 : action
+    기 능 : 주어진 객체의 메서드를 호출한다.
+    DanceRobot인 경우, dance()를 호출하고,
+    SingRobot인 경우, sing()을 호출하고,
+    DrawRobot인 경우, draw()를 호출한다.
+    반환타입 : 없음
+    매개변수 : Robot r - Robot인스턴스 또는 Robot의 자손 인스턴스
+
+```java
+[연습문제]/ch7/Exercise7_18.java
+class Exercise7_18 {
+public static void action(Robot r) {
+    if(r instanceof DanceRobot) {
+        DanceRobot dr = (DanceRobot)r;
+        dr.dance();
+    }
+    else if(r instanceof SingRobot) {
+        SingRobot sr = (SingRobot)r;
+        sr.sing();
+    }
+    else if(r instanceof DrawRobot) {
+        DrawRobot dr = (DrawRobot)r;
+        dr.draw();
+    }
+}
+
+    public static void main(String[] args) {
+        Robot[] arr = { new DanceRobot(), new SingRobot(), new DrawRobot()};
+        for(int i=0; i< arr.length;i++)
+        action(arr[i]);
+    } // main
+}
+
+class Robot {}
+
+class DanceRobot extends Robot {
+    void dance() {
+        System.out.println("춤을 춥니다.");
+    }
+}
+
+class SingRobot extends Robot {
+    void sing() {
+        System.out.println("노래를 합니다.");
+    }
+}
+
+class DrawRobot extends Robot {
+    void draw() {
+        System.out.println("그림을 그립니다.");
+    }
+}
+```
+
+<br>
+
+#### [7-19] 다음은 물건을 구입하는 사람을 정의한 Buyer클래스이다. 이 클래스는 멤버변수로 돈(money)과 장바구니(cart)를 가지고 있다. 제품을 구입하는 기능의 buy메서드와 장바구니에 구입한 물건을 추가하는 add메서드, 구입한 물건의 목록과 사용금액, 그리고 남은 금액을 출력하는 summary메서드를 완성하시오.
+
+    1. 메서드명 : buy
+    기 능 : 지정된 물건을 구입한다. 가진 돈(money)에서 물건의 가격을 빼고,
+    장바구니(cart)에 담는다.
+    만일 가진 돈이 물건의 가격보다 적다면 바로 종료한다.
+    반환타입 : 없음
+    매개변수 : Product p - 구입할 물건
+    2. 메서드명 : add
+    기 능 : 지정된 물건을 장바구니에 담는다.
+    만일 장바구니에 담을 공간이 없으면, 장바구니의 크기를 2배로 늘린 다음에 담는다.
+    반환타입 : 없음
+    매개변수 : Product p - 구입할 물건
+    3. 메서드명 : summary
+    기 능 : 구입한 물건의 목록과 사용금액, 남은 금액을 출력한다.
+    반환타입 : 없음
+    매개변수 : 없음
+
+```java
+[연습문제]/ch7/Exercise7_19.java
+class Exercise7_19 {
+    public static void main(String args[]) {
+        Buyer b = new Buyer();
+        b.buy(new Tv());
+        b.buy(new Computer());
+        b.buy(new Tv());
+        b.buy(new Audio());
+        b.buy(new Computer());
+        b.buy(new Computer());
+        b.buy(new Computer());
+
+        b.summary();
+        }
+}
+
+class Buyer {
+    int money = 1000;
+    Product[] cart = new Product[3]; // 구입한 제품을 저장하기 위한 배열
+    int i = 0; // Product배열 cart에 사용될 index
+    
+    void buy(Product p) { 
+        if(money < p.price) {
+            System.out.println("잔액이 부족하여 "+ p +"을/를 살수 없습니다.");
+            return;
+        }
+        money -= p.price;
+        add(p)
+    }
+
+    void add(product p) {
+        if(i>= cart.length) {
+            Product[] tmp = new Product[cart.length*2];
+            System.arraycopy(cart, 0, tmp, 0, cart.length);
+            cart = tmp;
+        }
+        cart[i++] = p
+    }
+
+    void summary() {
+        String itemList = "";
+        int sum = 0;
+
+        for(int i=0; i<cart.length; i++) {
+            itemList += cart[i] + ",";
+            sum += cart[i].price;
+        }
+
+        System.out.println("사용한 금액:"+sum);
+        System.out.println("남은 금액:"+money);
+    }
+}
+
+class Product {
+    int price; // 제품의 가격
+    Product(int price) {
+        this.price = price;
+    }
+}
+
+class Tv extends Product {
+    Tv() { super(100); }
+    public String toString() { return "Tv"; }
+    }
+
+class Computer extends Product {
+    Computer() { super(200); }
+    public String toString() { return "Computer";}
+    }
+
+class Audio extends Product {
+    Audio() { super(50); }
+    public String toString() { return "Audio"; }
+}
+[실행결과]
+잔액이 부족하여 Computer을/를 살수 없습니다.
+구입한 물건:Tv,Computer,Tv,Audio,Computer,Computer,
+사용한 금액:850
+남은 금액:150
+```
+
+<br>
+
+#### [7-20] 다음의 코드를 실행한 결과를 적으시오.
+
+```java
+[연습문제]/ch7/Exercise7_20.java
+class Exercise7_20 {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        Child c = new Child();
+
+        System.out.println("p.x = " + p.x);
+        p.method();
+
+        System.out.println("c.x = " + c.x);
+        c.method();
+    }
+}
+
+class Parent {
+    int x = 100;
+
+    void method() {
+        System.out.println("Parent Method");
+    }
+}
+
+class Child extends Parent {
+    int x = 200;
+
+    void method() {
+        System.out.println("Child Method");
+    }
+}
+[정답]
+실행결과]
+p.x = 100
+Child Method
+c.x = 200
+Child Method
+```
+
+<br>
+
+#### [7-21] 다음과 같이 attack메서드가 정의되어 있을 때, 이 메서드의 매개변수로 가능한 것 두 가지를 적으시오.
+
+```java
+interface Movable {
+    void move(int x, int y);
+}
+
+void attack(Movable f) {
+    /* 내용 생략 */
+}
+[정답] null, Movable인터페이스를 구현한 클래스 또는 그 자손의 인스턴스
+```
+
+<br>
+
+#### [7-22] 아래는 도형을 정의한 Shape클래스이다. 이 클래스를 조상으로 하는 Circle클래스와 Rectangle클래스를 작성하시오. 이 때, 생성자도 각 클래스에 맞게 적절히 추가해야한다.
+
+    (1) 클래스명 : Circle
+    조상클래스 : Shape
+    멤버변수 : double r - 반지름
+
+    (2) 클래스명 : Rectangle
+    조상클래스 : Shape
+    멤버변수 : double width - 폭
+    double height - 높이
+    메서드 :
+        1. 메서드명 : isSquare
+        기 능 : 정사각형인지 아닌지를 알려준다.
+        반환타입 : boolean
+        매개변수 : 없음
+
+```java
+[연습문제]/ch7/Exercise7_22.java
+abstract class Shape {
+    Point p;
+
+    Shape() {
+        this(new Point(0,0));
+    }
+
+    Shape(Point p) {
+        this.p = p;
+    }
+
+    abstract double calcArea(); // 도형의 면적을 계산해서 반환하는 메서드
+
+    Point getPosition() {
+        return p;
+    }
+
+    void setPosition(Point p) {
+        this.p = p;
+    }
+}
+
+class Rectangle extends Shape {
+    double width;
+    double height;
+
+    Rectangle(double width, double height) {
+        this(new Point(0,0), width, height);
+    }
+
+    Rectangle(Point p, double width, double height) {
+        super(p); // 조상의 멤버는 조상의 생성자가 초기화하도록 한다.
+        this.width = width;
+        this.height = height;
+    }
+
+    boolean isSquare() {
+        return width*height!=0 && width==height;
+    }
+
+    double calcArea() {
+        return width * height;
+    }
+
+class Circle extends Shape {
+    double r; // 반지름
+
+    Circle(double r) {
+        this(new Point(0,0),r); // Circle(Point p, double r)를 호출
+    }
+
+    Circle(Point p, double r) {
+        super(p); // 조상의 멤버는 조상의 생성자가 초기화하도록 한다.
+        this.r = r;
+    }
+
+    double calcArea() {
+        return Math.PI * r * r;
+    }
+}
+
+class Point {
+    int x;
+    int y;
+
+    Point() {
+        this(0,0);
+    }
+
+    Point(int x, int y) {
+        this.x=x;
+        this.y=y;
+    }
+
+    public String toString() {
+        return "["+x+","+y+"]";
+    }
+}
+```
+
+<br>
+
+#### [7-23] 문제7-22에서 정의한 클래스들의 면적을 구하는 메서드를 작성하고 테스트 하시오.
+
+    1. 메서드명 : sumArea
+    기 능 : 주어진 배열에 담긴 도형들의 넓이를 모두 더해서 반환한다.
+    반환타입 : double
+    매개변수 : Shape[] arr
+
+```java
+[연습문제]/ch7/Exercise7_23.java
+class Exercise7_23
+    {
+    static double sumArea(Shape[] arr) {
+        double sum = 0;
+        for(int i=0; i < arr.length;i++)
+            sum+= arr[i].calcArea();
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Shape[] arr = {new Circle(5.0), new Rectangle(3,4), new Circle(1)};
+        System.out.println("면적의 합:"+sumArea(arr));
+    }
+}
+```
+
+<br>
+
+#### [7-24] 다음 중 인터페이스의 장점이 아닌 것은?
+
+    a. 표준화를 가능하게 해준다.
+    b. 서로 관계없는 클래스들에게 관계를 맺어 줄 수 있다.
+    c. 독립적인 프로그래밍이 가능하다.
+    d. 다중상속을 가능하게 해준다.
+    e. 패키지간의 연결을 도와준다.
+
+`e`
+
+<br>
+
+#### [7-25] Outer클래스의 내부 클래스 Inner의 멤버변수 iv의 값을 출력하시오.
+
+```java
+[연습문제]/ch10/Exercise7_25.java
+class Outer { // 외부 클래스
+    class Inner { // 내부 클래스(인스턴스 클래스)
+        int iv=100;
+    }
+}
+
+    class Exercise7_25 {
+        public static void main(String[] args) {
+            Outer o = new Outer();
+            Outer.Inner ii = o.new Inner();
+            System.out.println(ii.iv);
+    }
+}
+[실행결과]
+100
+```
+
+<br>
+
+#### [7-26] Outer클래스의 내부 클래스 Inner의 멤버변수 iv의 값을 출력하시오.
+
+```java
+[연습문제]/ch10/Exercise7_26.java
+class Outer {
+    static class Inner {
+        int iv=200;
+    }
+}
+class Exercise7_26 {
+    public static void main(String[] args) {
+        Outer.Inner ii = new Outer.Inner();
+        System.out.println(ii.iv);
+    }
+}
+[실행결과]
+200
+```
+
+<br>
+
+#### [7-27] 다음과 같은 실행결과를 얻도록 (1)~(4)의 코드를 완성하시오.
+
+```java
+[연습문제]/ch10/Exercise7_27.java
+class Outer {
+    int value=10; // Outer.this.value
+
+    class Inner { // 인스턴스 클래스(instance inner class)
+        int value=20; // this.value
+
+        void method1() {
+            int value=30; // value
+
+            System.out.println(value);
+            System.out.println(this.value);
+            System.out.println(Outer.this.value);
+        }
+    } // Inner클래스의 끝
+} // Outer클래스의 끝
+
+class Exercise7_27 {
+public static void main(String args[]) {
+    Outer outer = new Outer();
+    Outer.Inner inner = outer.new Inner();
+    
+    inner.method1();
+    }
+}
+[실행결과]
+30
+20
+10
+```
+<br>
+
+#### [7-28] 아래의 EventHandler를 익명 클래스(anonymous class)로 변경하시오.
+
+```java
+[연습문제]/ch10/Exercise7_28_2.java
+import java.awt.*;
+import java.awt.event.*;
+class Exercise7_28_2 {
+    public static void main(String[] args) {
+        Frame f = new Frame();
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                    e.getWindow().setVisible(false);
+                    e.getWindow().dispose();
+                    System.exit(0);
+            }
+        });
+    }
+}
+```
+
+<br>
+
+#### [7-29] 지역 클래스에서 외부 클래스의 인스턴스멤버와 static멤버에 모두 접근할 수 있지만, 지역변수는 final이 붙은 상수만 접근할 수 있는 이유 무엇인가?
+
+`메서드가 수행을 마쳐서 지역변수가 소멸된 시점에도, 지역 클래스의 인스턴스가 소멸된 지역변수를 참조하려는 경우가 발생할 수 있기 때문이다.`
